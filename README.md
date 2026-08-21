@@ -44,7 +44,14 @@ The system is built on a **Local RAG (Retrieval-Augmented Generation) + Agentic 
 3. **Database Initialization:** Set up the local Vector Database.
 4. **Data Ingestion Pipeline:** Create scripts to feed local project files into the DB.
 5. **RAG Integration:** Connect the LLM with the Vector DB using an orchestration framework (LangChain/LlamaIndex).
-6. **UI/Interface Creation:** Build the local web interface for seamless interaction.
+6. **UI/Interface Creation:** The project now includes a built-in Dark Mode Chat UI designed for Samsung DeX.
+
+## 💻 Web App Interface
+
+The FastAPI server now directly serves the frontend web application. Once the server is running, simply open your browser and navigate to:
+**[http://localhost:8000](http://localhost:8000)**
+
+This will load the `.ac` Personal AI chat interface.
 
 ---
 *Note: This project is under active development and relies entirely on open-source, on-device tools to guarantee absolute privacy and zero recurring costs.*

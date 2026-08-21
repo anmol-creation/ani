@@ -1,7 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from src.agent import ACAgent
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from src.agent import ACAgent
+import os
 
 app = FastAPI(title=".ac Personal AI Assistant API")
 
@@ -13,6 +16,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Serve the frontend directory statically
+frontend_path = os.path.join(os.path.dirname(__file__), "..", "frontend")
+app.mount("/static", StaticFiles(directory=frontend_path), name="static")
+
 
 # Initialize the agent globally
 agent = ACAgent()
@@ -26,6 +34,14 @@ class ChatResponse(BaseModel):
 
 @app.get("/")
 def read_root():
+    # Serve the main index.html for the web app UI
+    index_path = os.path.join(frontend_path, "index.html")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
+    return {"status": "error", "message": "Frontend not found"}
+
+@app.get("/health")
+def read_health():
     return {
         "status": "online",
         "message": "Welcome to the .ac Personal AI Brain. System is ready."

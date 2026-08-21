@@ -1,0 +1,2 @@
+uvicorn.log
+__pycache__/
