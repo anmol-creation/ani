@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>.ac Personal AI</title>
+    <!-- Fetching resources relatively, works when served statically or directly -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/static/style.css" onerror="this.onerror=null; this.href='style.css'">
 </head>
 <body>
     <div class="app-container">
@@ -46,6 +48,6 @@
             </div>
         </main>
     </div>
-    <script src="app.js"></script>
+    <script src="/static/app.js" onerror="this.onerror=null; this.src='app.js'"></script>
 </body>
 </html>

@@ -35,7 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function checkBackendStatus() {
         try {
-            const response = await fetch(`${API_URL}/`);
+            // Check the /health endpoint instead of / (which now serves the UI)
+            const response = await fetch(`${API_URL}/health`);
             if (response.ok) {
                 statusIndicator.classList.remove('offline');
                 statusIndicator.classList.add('online');
